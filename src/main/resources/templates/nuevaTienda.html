@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title>Ingresar Tienda</title>
+	</head>
+	<body>
+		<h1>Nueva Tienda</h1>
+		<br>
+		<p th:if="${mensaje!=null}" th:text="${mensaje}"></p>
+		<br>
+		<form th:action="@{/tienda/registrar}" method="POST" th:object="${tienda}">
+			Direccion: <input type="text" th:field="*{direccion}"><br><br>
+			Distrito: <input type="text" th:field="*{distrito}"><br><br>
+			Aforo: <input type="text" th:field="*{aforo}"><br><br>
+			Jefe de Tienda: <select th:field="*{codColaborador.id}">
+				<option th:each="colaborador: ${listaColaboradores}" th:text="${colaborador.nombres}" th:value="${colaborador.id}"></option>	
+			</select>		
+			<br><br>
+			<button>Grabar</button>	
+		</form>
+	</body>
+</html>

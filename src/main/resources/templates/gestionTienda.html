@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+	</head>
+	<body>
+		<h1>Gestiónar Tiendas</h1>
+		<br><br>
+		<h2>Criterios de Búsqueda</h2><br><br>
+		<form th:action="@{/tienda/buscar}" method="GET">
+			Distrito: <input type="text" name="distrito"><button>Buscar</button>
+		</form>
+		<br><br><br>
+		<h2>Resultados de Búsqueda</h2><br>
+		<p th:if="${mensaje!=null}" th:text="${mensaje}"></p>
+		<table>
+			<tr>
+				<td>Código</td>
+				<td>Direccion</td>
+				<td>Distrito</td>
+				<td>Aforo</td>
+			</tr>
+			<tr th:each="tienda: ${listaTiendas}">
+				<td th:text="${tienda.id}"></td>
+				<td th:text="${tienda.direccion}"></td>
+				<td th:text="${tienda.distrito}"></td>
+				<td th:text="${tienda.aforo}"></td>
+			</tr>
+		</table>
+		<br>
+		<form th:action="@{/tienda/nuevo}" method="POST">
+			<button>Nuevo</button>
+		</form>
+	</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title>Login</title>
+	</head>
+	<body>
+		<h1>Bienvenido a ISIL SOFT</h1>
+		<br>
+		<h3>Ingresa tus credenciales:</h3>
+		<p th:if="${mensaje!=null}" th:text="${mensaje}"></p>
+		<form th:action="@{/usuario/validarUsuario}" method="POST">
+			<label for="correo">Correo</label> <input type="text" name="correo" id="correo" required><br><br>
+			<label for="password">Contraseña</label> <input type="password" name="password" id="password" required><br><br>
+			<button>Ingresar</button>			
+		</form>
+		<br>
+		<a th:href="@{/usuario/recuperarPassword}">¿Olvidaste tu contraseña?</a>
+		<br>
+		<h4>¿No estas registrado?</h4>
+		<a th:href="@{/usuario/nuevoUsuario}">Registrate aquí</a>
+	</body>
+</html>
